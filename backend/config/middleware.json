@@ -14,6 +14,10 @@
     "after": [
       "parser",
       "router"
-    ]
+    ],
+    "cors": {
+      "enabled": true,
+      "origin": ["http://143.110.144.158:3000"] 
+    }
   }
 }
