@@ -13,7 +13,7 @@ const Restaurant = ({ restaurant, dishes }) => {
   );
 
   const backgroundImageStyle = {
-    backgroundImage: `url(http://localhost:1337${restaurant.image.url})`,
+    backgroundImage: `url(http://143.110.144.158:1337/${restaurant.image.url})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -54,7 +54,7 @@ const Restaurant = ({ restaurant, dishes }) => {
           <Col md={4} key={dish.id}>
             <Card className="shadow-sm" style={{ marginBottom: '30px' }}>
               <div style={{ height: '300px', overflow: 'hidden' }}>
-                <CardImg top width="100%" src={`http://localhost:1337${dish.image.url}`} alt={dish.name} />
+                <CardImg top width="100%" src={`http://143.110.144.158:1337/${dish.image.url}`} alt={dish.name} />
               </div>
               <CardBody>
                 <CardTitle tag="h5">{dish.name}</CardTitle>

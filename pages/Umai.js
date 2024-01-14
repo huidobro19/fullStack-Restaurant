@@ -5,7 +5,7 @@ import Restaurant from '../components/restaurant';
 import Cart from "../components/cart"
 
 function Umaipage() {
-    const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://143.110.144.158:1337";
 
     console.log(`URL: ${API_URL}`)
 
