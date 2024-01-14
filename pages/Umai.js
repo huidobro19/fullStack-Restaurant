@@ -48,31 +48,34 @@ function Umaipage() {
           }
       `;
 
-      const { loading: restaurantLoading, error: restaurantError, data: restaurantData } = useQuery(GET_RESTAURANT, {
-          variables: { name: "4" },
-      });
+      
+    const { loading: restaurantLoading, error: restaurantError, data: restaurantData } = useQuery(GET_RESTAURANT, {
+        variables: { name: "1" },
+    });
+    
+    console.log("Query result (Restaurant):", restaurantData);
+    
+    // Check if restaurant data is available
+    const restaurantId = restaurantData?.restaurant?.id;
+    
 
-      console.log("Query result (Restaurant):", restaurantData);
-
-      const { loading: dishesLoading, error: dishesError, data: dishesData } = useQuery(GET_DISHES, {
-          variables: { id: restaurantData?.restaurant.id },
-      });
-
-      console.log("Query result (Dishes):", dishesData);
-
-
-      if (restaurantLoading || dishesLoading) return <p>Loading...</p>;
-      if (restaurantError || dishesError) return <p>Error: {restaurantError?.message || dishesError?.message}</p>;
-
-      // Renderizar el componente Restaurant aquí con los datos obtenidos
-
-      var restaurant = restaurantData.restaurant;
-      var dishes = dishesData.restaurant.dishes;
-
-
-
-
-      return <Restaurant restaurant={restaurant} dishes={dishes} />;
+    const { loading: dishesLoading, error: dishesError, data: dishesData } = useQuery(GET_DISHES, {
+        variables: { id: restaurantId },
+        skip: !restaurantId, // Skip this query if restaurantId is not available
+    });
+    
+    console.log("Query result (Dishes):", dishesData);
+    
+    if (restaurantLoading || dishesLoading) return <p>Loading...</p>;
+    if (restaurantError || dishesError) return <p>Error: {restaurantError?.message || dishesError?.message}</p>;
+    
+    // Ensure that restaurant data is available before rendering
+    if (!restaurantData || !restaurantData.restaurant) return <p>Restaurant not found</p>;
+    
+    var restaurant = restaurantData.restaurant;
+    var dishes = dishesData?.restaurant?.dishes;
+    
+    return <Restaurant restaurant={restaurant} dishes={dishes} />
     };
 
     return (

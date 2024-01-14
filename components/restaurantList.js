@@ -82,7 +82,7 @@ if(searchQuery.length > 0){
               top={true}
               style={{ height: 300 ,width:"500px"} }
               src={
-              `http://localhost:1337`+ res.image.url
+              `http://143.110.144.158:1337`+ res.image.url
               }
             />
           </div>
