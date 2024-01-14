@@ -49,7 +49,7 @@ function kyoto() {
       `;
 
     const { loading: restaurantLoading, error: restaurantError, data: restaurantData } = useQuery(GET_RESTAURANT, {
-        variables: { name: "1" },
+        variables: { name: "5" },
     });
     
     console.log("Query result (Restaurant):", restaurantData);

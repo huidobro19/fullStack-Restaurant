@@ -49,7 +49,7 @@ function spicy() {
       `;
 
     const { loading: restaurantLoading, error: restaurantError, data: restaurantData } = useQuery(GET_RESTAURANT, {
-        variables: { name: "1" },
+        variables: { name: "3" },
     });
     
     console.log("Query result (Restaurant):", restaurantData);
